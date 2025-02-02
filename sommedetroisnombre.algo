@@ -1,0 +1,35 @@
+FUNCTION analyse_phrase(phrase : STRING) : VOID
+VAR
+    longueur, nbr_mot, nbr_voyelles : INTEGER ;
+    dans_mots : BOOLEAN ;
+BEGIN
+    longueur := 0 ;
+    nbr_mot := 0 ;
+    nbr_voyelles := 0 ;
+    dans_mots := FALSE ;
+    FOR each character IN sentence DO
+        IF (character = '.') THEN
+            BREAK ;
+        END_IF
+        longueur := longueur + 1 ;
+        IF (character IN 'aeiouAEIOU') THEN
+            nbr_voyelles := nbr_voyelles + 1 ;
+        END_IF
+        IF (character = ' ') THEN
+            IF (dans_mots = TRUE) THEN
+                nbr_mot := nbr_mot + 1 ;
+                dans_mots := FALSE ;
+            END_IF
+        ELSE
+            dans_mots := TRUE ;
+        END_IF
+    END_FOR
+
+    IF (dans_mots = TRUE) THEN
+        nbr_mot := nbr_mot + 1 ;
+    END_IF
+
+    write("longueur de la phrase: ", longueur ;) 
+    PRINT("Le nombre de mot dans la phrase: ", nbr_mot ;)
+    PRINT("le nombre de voyelles dans la phrase: ", nbr_voyelles ;)
+END
