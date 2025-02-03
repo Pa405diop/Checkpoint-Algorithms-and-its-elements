@@ -7,7 +7,7 @@ BEGIN
     nbr_mot := 0 ;
     nbr_voyelles := 0 ;
     dans_mots := FALSE ;
-    FOR each character IN sentence DO
+    FOR each character IN phrase DO
         IF (character = '.') THEN
             BREAK ;
         END_IF
